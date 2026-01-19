@@ -1,0 +1,30 @@
+@import './variables.less';
+
+// 初始化容器
+.container() {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: @bili-bg-main;
+  cursor: pointer;
+  text-align: center;
+}
+
+//布局
+.flex(){
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+// 多行文本省略混入
+.text-ellipsis-multi(@line: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+

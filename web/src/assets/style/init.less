@@ -1,0 +1,240 @@
+// bilibili.less - B站风格样式初始化文件
+
+// 2. 基础样式重置 (Normalize + B站风格适配)
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; // 去除移动端点击高亮
+}
+
+// 统一body样式（贴合B站页面基础）
+body {
+  font-family: @bili-font-main;
+  font-size: 14px;
+  line-height: 1.5;
+  color: @bili-text-main;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased; // 字体抗锯齿
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 重置HTML5标签
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, nav, section, summary {
+  display: block;
+}
+
+// 列表样式重置
+ul, ol {
+  list-style: none;
+}
+
+// 链接样式（B站风格）
+a {
+  color: @bili-secondary;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: @bili-primary;
+    text-decoration: underline;
+  }
+
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+// 图片样式
+img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+}
+
+// 表单元素重置
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+button, input {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+
+  &::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+// 表格样式
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 3. B站风格滚动条样式
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: @bili-bg-main;
+  border-radius: @bili-border-radius;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: @bili-border-radius;
+
+  &:hover {
+    background: #a8a8a8;
+  }
+}
+
+// 4. 通用工具类（B站常用）
+// 清除浮动
+.clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+// 文本溢出省略
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行文本溢出省略（适配B站卡片）
+.text-ellipsis-multi(@line: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+// 隐藏元素
+.hide {
+  display: none !important;
+}
+
+// 居中对齐
+.text-center {
+  text-align: center;
+}
+
+// 左/右对齐
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+// 5. 响应式基础（贴合B站响应式断点）
+@bili-breakpoint-sm: 576px;
+@bili-breakpoint-md: 768px;
+@bili-breakpoint-lg: 992px;
+@bili-breakpoint-xl: 1200px;
+@bili-breakpoint-xxl: 1440px;
+
+
+// 示例：不同屏幕下的样式
+// .box {
+//   width: 100%;
+//   .respond-to(@bili-breakpoint-md) {
+//     width: 50%;
+//   }
+// }
+
+// 6. 全局动画（B站常用过渡效果）
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s ease-in-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "sort": [
+    {
+      "name": "首页",
+      "icon": "ShouYeSvg"
+    },
+    {
+      "name": "番剧"
+    },
+    {
+      "name": "直播"
+    },
+    {
+      "name": "游戏中心"
+    },
+    {
+      "name": "会员购"
+    },
+    {
+      "name": "漫画"
+    },
+    {
+      "name": "下载客户端",
+      "icon": "ShouYeSvg"
+    }
+  ]
+}

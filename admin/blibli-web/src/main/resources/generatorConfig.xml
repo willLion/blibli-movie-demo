@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+
+        <!-- 通用 Mapper 继承的接口 -->
+<!--        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
+<!--            &lt;!&ndash; 指定要继承的Mapper接口，这里设置为MyBatis的@Mapper注解 &ndash;&gt;-->
+<!--            <property name="mappers" value="org.apache.ibatis.annotations.Mapper"/>-->
+<!--        </plugin>-->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <commentGenerator>
+            <!-- 不生成时间戳 -->
+            <property name="suppressDate" value="true"/>
+            <!-- 生成注解 -->
+            <property name="suppressAllComments" value="false"/>
+            <!-- 注解采用数据库的标注，suppressAllComments 必须设置为 false 才会生效 -->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/blibli?useSSL=false"
+                        userId="blibli"
+                        password="blibli">
+            <!-- oracle 获取数据库注解的方式，想要获取数据库注解必须添加 -->
+<!--             <property name="remarksReporting" value="true"/> -->
+            <!-- mysql 获取数据库注解的方式，想要获取数据库注解必须添加 -->
+            <property name="useInformationSchema" value="true"/>
+            <!-- 其它类型数据库暂不支持 -->
+        </jdbcConnection>
+
+        <!-- 生成实体类位置 -->
+        <javaModelGenerator targetPackage="com.blibli.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成的 xml 映射文件位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成 mapper 接口的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.blibli.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 数据表 和 JAVA 实体的映射，tableName 表名，domainObjectName 实体名 -->
+        <table tableName="user_info" domainObjectName="UserInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+
+
+        <!-- 如果想要一次性生成所有表，可以把 tableName 配置为 %，一般不推荐这么干，开发项目的时候最好是要用到哪些表，才去生成 -->
+        <!-- <table tableName="%"/> -->
+    </context>
+</generatorConfiguration>
