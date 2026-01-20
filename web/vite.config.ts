@@ -7,6 +7,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
 
 export default defineConfig({
   build: {
@@ -41,8 +43,14 @@ export default defineConfig({
         `,
         // 解决 Less 版本兼容问题（如 Less 4.x 可能需要）
         javascriptEnabled: true
-      }
+      },
     },
+    postcss: {
+      plugins: [
+        tailwindcss(), // 加载 tailwind.config.js 配置
+        autoprefixer() // 自动补全浏览器前缀
+      ]
+    }
   },
   plugins: [
     vue(),

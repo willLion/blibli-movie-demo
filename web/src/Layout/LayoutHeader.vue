@@ -27,7 +27,6 @@ import HeaderSortIcon from "@/Layout/LayoutHeaderCom/HeaderSortIcon.vue";
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
-  padding: 0 30px
-;
+  padding: 0 30px;
 }
 </style>
