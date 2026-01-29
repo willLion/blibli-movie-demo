@@ -18,7 +18,8 @@ const changeFlag1 = () => {
 
 <template>
   <div
-    class="container w-[285px] h-[140px] mt-[12px] bg-[#e1e0dd] cursor-default relative rounded-lg header-search-container hover:bg-[#ffffff]"
+    class="container w-[285px] h-[140px] mt-[12px] bg-[#e1e0dd]
+    cursor-default relative rounded-lg header-search-container hover:bg-[#ffffff]"
     tabindex="-1"
     @click="changeFlag"
     @blur="changeFlag1"
@@ -30,20 +31,18 @@ const changeFlag1 = () => {
         {{ plaContext }}11
       </div>
       <input class="hsc-input" v-else type="text" v-model="context" />
-      <div class="w-[34px] h-[34px] text-center absolute top-[4px] right-[5px]
-       rounded-[6px] cursor-pointer hover:bg-[#e6e7e9] line-[34px] "
-       >
-        <SearchSvg  style="width: 17px; height: 17px; margin-left: 10px; margin-top: 8px" />
+      <div
+        class="w-[34px] h-[34px] text-center absolute top-[4px] right-[5px] rounded-[6px] cursor-pointer hover:bg-[#e6e7e9] line-[34px]"
+      >
+        <SearchSvg style="width: 17px; height: 17px; margin-left: 10px; margin-top: 8px" />
       </div>
     </div>
-    <div class="hsc-body">
-      <div
-        class="hsc-body-his h-[50px] line-[50px] flex justify-between items-center"
-      >
+    <div class="hsc-body h-auto" v-if="isFlag">
+      <div class="hsc-body-his h-[40px] line-[40px] flex justify-between items-center">
         <span style="font-size: 16px; margin-left: 20px">搜索历史</span>
         <span
-          style=" color: #ccc; cursor: pointer; margin-right: 20px; font-size: 12px"
-          class="change-color "
+          style="color: #ccc; cursor: pointer; margin-right: 20px; font-size: 12px"
+          class="change-color"
           >清空</span
         >
       </div>
@@ -63,15 +62,16 @@ const changeFlag1 = () => {
         <span style="margin-left: 25px"> <el-tag closable effect="light"> 全款 </el-tag></span>
       </div>
       <div class="hsc-body-title" style="height: 50px; text-align: left; line-height: 50px">
-        <span class="ml-[20px]" style="font-size: 16px;">blibli热搜</span>
+        <span class="ml-[20px]" style="font-size: 16px">blibli热搜</span>
       </div>
-      <div class="hsc-body-lis">
-        <span>1 blibli热搜</span>
-        <span>1 blibli热搜</span>
-        <span>1 blibli热搜</span>
-        <span>1 blibli热搜</span>
-        <span>1 blibli热搜</span>
-        <span>1 blibli热搜</span>
+      <div class="hsc-body-lis w-[100%] flex flex-col p-[0] text-left">
+        <div class="flex h-[40px] items-center pl-[1em]
+         cursor-pointer
+         hover:bg-[#E3E5E7]" v-for="i in 10" :key="i">
+          <span class="w-[30px] text-center pr-[1em]">{{i}}</span>
+          <span class="pr-[0.5em]">blibli热搜</span>
+          <img class="img-ca" src="@/assets/img/header/redian.png" alt="" />
+        </div>
       </div>
     </div>
   </div>
@@ -105,12 +105,12 @@ const changeFlag1 = () => {
 
   .hsc-body {
     width: 100%;
-    height: 600px;
     background-color: white;
     z-index: 999;
     border: 0.5px solid #ccc;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-top: none;
+    padding-bottom: 20px;
   }
 }
 

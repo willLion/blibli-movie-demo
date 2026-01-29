@@ -28,8 +28,8 @@
           <ShouYeSvg style="height: 10px; width: 10px;margin-left: 5px"/>
         </template>
         <template v-else-if="sortItem.icon ==='XiaZaiSvg'">
-          <xia-zai-svg  style="width: 16px; height: 16px; transform: translateY(2px)" />
-          {{sortItem.name}}
+          <xia-zai-svg  style="width: 16px; height: 16px; transform: translateY(25px)" />
+          <div style="transform: translateY(-15px); margin-left: 25px">{{sortItem.name}}</div>
         </template>
       </template>
     </div>
